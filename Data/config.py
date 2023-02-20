@@ -1,0 +1,6 @@
+name = "vishnu"
+number = "9490058514"
+email = "vishnuvardhanuv36@gmail.com"
+password = "vishnu161999"
+user_git = "vishnu4reddy"
+git_pass = "vishnu16REDDY@"

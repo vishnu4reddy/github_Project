@@ -6,7 +6,7 @@ password = config.git_pass
 number = config.number
 
 
-def github(page: Page):
+def test_github(page: Page):
     # with sync_playwright() as p:
     #     browser = p.chromium.launch(headless=False)
     #     context = browser.new_context(
@@ -27,13 +27,12 @@ def github(page: Page):
     page.keyboard.type(password)
     page.keyboard.press("Tab")
     page.keyboard.press("Enter")
-    page.breakpoint()
     page.screenshot(path="screenshot2.png", full_page=True)
     page.get_by_role("link", name="Sign in").click()
     page.locator(
         "//form[@action='/dashboard/ajax_my_repositories?location=left']//button[@name='button'][normalize-space()='Show more']").click()
     page.locator(
-        "//ul[2]//li[1]//div[1]//div[1]//a[1]").click()
+        "//ul[2]//li[2]//div[1]//div[1]//a[1]").click()
     page.get_by_role("link", name="Tests").click()
     page.get_by_role("link", name="test_Share.py").click()
     page.locator(
@@ -60,19 +59,4 @@ def github(page: Page):
     page.keyboard.press("Backspace")
     page.screenshot(path="screenshot6.png", full_page=True)
     page.keyboard.press("Control+V")
-    page.screenshot(path="screenshot7.png", full_page=True)
-    page.locator("//canvas[@class='xterm-cursor-layer']").click()
-    print("I Am In Terminal")
-    page.screenshot(path="screenshot8.png", full_page=True)
-    page.keyboard.type("clear", delay=10)
-    page.screenshot(path="screenshot9.png", full_page=True)
-    page.keyboard.press("Enter")
-    page.keyboard.type("pip install pytest", delay=10)
-    page.keyboard.press("Enter")
-    page.screenshot(path="screenshot10.png", full_page=True)
-    # page.locator("//div[contains(@class,'editor-container')]//div[5]//div[19]").click()
-    # page.wait_for_selector("//div[contains(@class,'editor-container')]//div[5]//div[19]")
-    print("landed On Moon")
-    time.sleep(20)
     page.close()
-    # context.close()
