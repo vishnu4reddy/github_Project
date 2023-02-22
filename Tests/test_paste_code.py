@@ -1,3 +1,4 @@
+from Page_Object.login_page_po import LoginPage
 from playwright.sync_api import Page
 from Data import config
 Email = config.user_git
@@ -5,57 +6,14 @@ password = config.git_pass
 number = config.number
 
 
-def test_github(page: Page):
-    # with sync_playwright() as p:
-    #     browser = p.chromium.launch(headless=False)
-    #     context = browser.new_context(
-    #         record_video_dir="./record_videos/",
-    #         record_video_size={"width": 640, "height": 480}
-    #     )
-    #     page = context.new_page()
-    print("Starting On Earth")
-    page.goto("https://www.google.com/")
-    page.get_by_role("combobox", name="Search").click()
-    page.get_by_role("combobox", name="Search").fill("github")
-    page.keyboard.press("Enter")
-    page.screenshot(path="screenshot1.png", full_page=True)
-    page.locator("//a[normalize-space()='+.Git Hub Login']").click()
-    page.locator("//input[@id='login_field']").click()
-    page.locator("//input[@id='login_field']").fill(Email)
-    page.keyboard.press("Tab")
-    page.keyboard.type(password)
-    page.keyboard.press("Tab")
-    page.keyboard.press("Enter")
-    page.screenshot(path="screenshot2.png", full_page=True)
-    page.get_by_role("link", name="Sign in").click()
-    page.locator(
-        "(//button[@name='button'][normalize-space()='Show more'])[1]").click()
-    page.locator(
-        "//ul[2]//li[2]//div[1]//div[1]//a[1]").click()
-    page.get_by_role("link", name="Tests").click()
-    page.get_by_role("link", name="test_Share.py").click()
-    page.locator(
-        "//remote-clipboard-copy[@class='d-inline-block btn-octicon']").click()
-    page.screenshot(path="screenshot3.png", full_page=True)
-    page.get_by_role("link", name="Codespaces").click()
-    page.get_by_role("button", name="Codespace configuration").click()
-    page.locator(
-        "//button[@data-action='click:options-popover#showEditors']").click()
-    page.screenshot(path="screenshot4.png", full_page=True)
-    for i in range(2):
-        page.keyboard.press("Tab")
-    page.keyboard.press("Enter")
-    # page.get_by_role("menuitem", name="Open in browser")
-    # page.get_by_label("Open visual Studio Code").click()
-    print("I Am In V.S.Code")
-    page.locator(
-        "//div[@class='monaco-icon-label-container']").click()
-    page.locator("//span[contains(text(),'test_sample.py')]").click()
-    page.locator(
-        "//div[@class='view-lines monaco-mouse-cursor-text']").click()
-    page.keyboard.press("Control+A")
-    page.screenshot(path="screenshot5.png", full_page=True)
-    page.keyboard.press("Backspace")
-    page.screenshot(path="screenshot6.png", full_page=True)
-    page.keyboard.press("Control+V")
-    page.close()
+def test_check_login(page: Page):
+
+    login_page = LoginPage(page)
+    login_page.navigate()
+    login_page.login(Email, password)
+    login_page.repositories()
+    login_page.test_files()
+    login_page.Codespaces()
+    login_page.Codespace()
+
+    LoginPage(page)
