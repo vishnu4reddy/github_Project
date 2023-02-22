@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, sync_playwright
+from playwright.sync_api import Page
 import time
 from Data import config
 Email = config.user_git
@@ -49,6 +49,3 @@ def test_github(page: Page):
 #     self.password.fill(password)
 #     self.login_button.click()
 #     expect(self.home_button).to_be_visible()
-
-
-

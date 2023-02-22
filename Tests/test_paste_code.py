@@ -1,5 +1,4 @@
-from playwright.sync_api import Page, sync_playwright
-import time
+from playwright.sync_api import Page
 from Data import config
 Email = config.user_git
 password = config.git_pass
@@ -30,7 +29,7 @@ def test_github(page: Page):
     page.screenshot(path="screenshot2.png", full_page=True)
     page.get_by_role("link", name="Sign in").click()
     page.locator(
-        "//form[@action='/dashboard/ajax_my_repositories?location=left']//button[@name='button'][normalize-space()='Show more']").click()
+        "(//button[@name='button'][normalize-space()='Show more'])[1]").click()
     page.locator(
         "//ul[2]//li[2]//div[1]//div[1]//a[1]").click()
     page.get_by_role("link", name="Tests").click()
@@ -50,8 +49,8 @@ def test_github(page: Page):
     # page.get_by_label("Open visual Studio Code").click()
     print("I Am In V.S.Code")
     page.locator(
-        "//div[@title='/workspaces/Post_Rolex_Linkedin_play/Tests • Contains emphasized items']//div[@class='monaco-icon-label-container']").click()
-    page.locator("div[class='monaco-icon-label file-icon tests-name-dir-icon test_sample.py-name-file-icon name-file-icon py-ext-file-icon ext-file-icon python-lang-file-icon explorer-item monaco-decoration-itemColor--ec98p9 monaco-decoration-itemBadge--ec98p9 monaco-decoration-iconBadge--ec98p9'] div[class='monaco-icon-label-container']").click()
+        "//div[@class='monaco-icon-label-container']").click()
+    page.locator("//span[contains(text(),'test_sample.py')]").click()
     page.locator(
         "//div[@class='view-lines monaco-mouse-cursor-text']").click()
     page.keyboard.press("Control+A")
