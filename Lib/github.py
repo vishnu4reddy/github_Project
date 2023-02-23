@@ -1,78 +1,78 @@
-from playwright.sync_api import Page, sync_playwright
-import time
-from Data import config
-Email = config.user_git
-password = config.git_pass
-number = config.number
+# from playwright.sync_api import sync_playwright,Page
 
 
-def github(page: Page):
-    # with sync_playwright() as p:
-    #     browser = p.chromium.launch(headless=False)
-    #     context = browser.new_context(
-    #         record_video_dir="./record_videos/",
-    #         record_video_size={"width": 640, "height": 480}
-    #     )
-    #     page = context.new_page()
-    print("Starting On Earth")
-    page.goto("https://www.google.com/")
-    page.get_by_role("combobox", name="Search").click()
-    page.get_by_role("combobox", name="Search").fill("github")
-    page.keyboard.press("Enter")
-    page.screenshot(path="screenshot1.png", full_page=True)
-    page.locator("//a[normalize-space()='+.Git Hub Login']").click()
-    page.locator("//input[@id='login_field']").click()
-    page.locator("//input[@id='login_field']").fill(Email)
-    page.keyboard.press("Tab")
-    page.keyboard.type(password)
-    page.keyboard.press("Tab")
-    page.keyboard.press("Enter")
-    page.breakpoint()
-    page.screenshot(path="screenshot2.png", full_page=True)
-    page.get_by_role("link", name="Sign in").click()
-    page.locator(
-        "//form[@action='/dashboard/ajax_my_repositories?location=left']//button[@name='button'][normalize-space()='Show more']").click()
-    page.locator(
-        "//ul[2]//li[1]//div[1]//div[1]//a[1]").click()
-    page.get_by_role("link", name="Tests").click()
-    page.get_by_role("link", name="test_Share.py").click()
-    page.locator(
-        "//remote-clipboard-copy[@class='d-inline-block btn-octicon']").click()
-    page.screenshot(path="screenshot3.png", full_page=True)
-    page.get_by_role("link", name="Codespaces").click()
-    page.get_by_role("button", name="Codespace configuration").click()
-    page.locator(
-        "//button[@data-action='click:options-popover#showEditors']").click()
-    page.screenshot(path="screenshot4.png", full_page=True)
-    for i in range(2):
-        page.keyboard.press("Tab")
-    page.keyboard.press("Enter")
-    # page.get_by_role("menuitem", name="Open in browser")
-    # page.get_by_label("Open visual Studio Code").click()
-    print("I Am In V.S.Code")
-    page.locator(
-        "//div[@title='/workspaces/Post_Rolex_Linkedin_play/Tests • Contains emphasized items']//div[@class='monaco-icon-label-container']").click()
-    page.locator("div[class='monaco-icon-label file-icon tests-name-dir-icon test_sample.py-name-file-icon name-file-icon py-ext-file-icon ext-file-icon python-lang-file-icon explorer-item monaco-decoration-itemColor--ec98p9 monaco-decoration-itemBadge--ec98p9 monaco-decoration-iconBadge--ec98p9'] div[class='monaco-icon-label-container']").click()
-    page.locator(
-        "//div[@class='view-lines monaco-mouse-cursor-text']").click()
-    page.keyboard.press("Control+A")
-    page.screenshot(path="screenshot5.png", full_page=True)
-    page.keyboard.press("Backspace")
-    page.screenshot(path="screenshot6.png", full_page=True)
-    page.keyboard.press("Control+V")
-    page.screenshot(path="screenshot7.png", full_page=True)
-    page.locator("//canvas[@class='xterm-cursor-layer']").click()
-    print("I Am In Terminal")
-    page.screenshot(path="screenshot8.png", full_page=True)
-    page.keyboard.type("clear", delay=10)
-    page.screenshot(path="screenshot9.png", full_page=True)
-    page.keyboard.press("Enter")
-    page.keyboard.type("pip install pytest", delay=10)
-    page.keyboard.press("Enter")
-    page.screenshot(path="screenshot10.png", full_page=True)
-    # page.locator("//div[contains(@class,'editor-container')]//div[5]//div[19]").click()
-    # page.wait_for_selector("//div[contains(@class,'editor-container')]//div[5]//div[19]")
-    print("landed On Moon")
-    time.sleep(20)
-    page.close()
-    # context.close()
+class LoginPage:
+    def __init__(self, page):
+        self.page = page
+        self.username = page.locator('//*[@id="login_field"]')
+        self.password = page.locator('//*[@id="password"]')
+        self.login_button = page.locator("//input[@name='commit']")
+        self.seemore = page.locator(
+            "(//button[@name='button'][normalize-space()='Show more'])[1]")
+        self.perticular_repositories = page.locator(
+            "//ul[2]//li[4]//div[1]//div[1]//a[1]")
+        self.test_folder = page.get_by_role("link", name="Tests")
+        self.test_file = page.locator(
+            "//a[normalize-space()='test_share_post.py']")
+        self.copy_file = page.locator(
+            "//remote-clipboard-copy[@class='d-inline-block btn-octicon']")
+        self.codespaces = page.get_by_role("link", name="Codespaces")
+        self.configuration = page.get_by_role(
+            "button", name="Codespace configuration")
+        self.browser = page.locator(
+            "//button[@data-action='click:options-popover#showEditors']")
+        self.select_browser = page.locator(
+            "//span[normalize-space()='Open in browser']")
+        self.codespace = page.locator(
+            "//span[contains(text(),'Tests')]")
+        self.codespace_file = page.locator(
+            "//span[contains(text(),'test_sample.py')]")
+        self.wholespace = page.locator(
+            "//div[@class='view-lines monaco-mouse-cursor-text']")
+        self.control_1 = page.keyboard
+        self.control_2 = page.keyboard
+        self.control_3 = page.keyboard
+        self.terminal = page.locator("//canvas[@class='xterm-cursor-layer']")
+        self.t_control_1 = page.keyboard
+        self.t_control_2 = page.keyboard
+        self.t_control_3 = page.keyboard
+        self.t_control_4 = page.keyboard
+        # self.t_control_1 = page
+
+    def navigate(self):
+        self.page.goto("https://github.com/login")
+
+    def login(self, username, password):
+        self.username.fill(username)
+        self.password.fill(password)
+        self.login_button.click()
+
+    def repositories(self):
+        self.seemore.click()
+        self.perticular_repositories.click()
+
+    def test_files(self):
+        self.test_folder.click()
+        self.test_file.click()
+        self.copy_file.click()
+
+    def Codespaces(self):
+        self.codespaces.click()
+        self.configuration.click()
+        self.browser.click()
+        self.select_browser.click()
+
+    def Codespace(self):
+        self.codespace.click()
+        self.codespace_file.click()
+        self.wholespace.click()
+        self.control_1.press("Control+A")
+        self.control_2.press("Backspace")
+        self.control_3.press("Control+V")
+
+    def Terminal(self):
+        self.terminal.click()
+        self.t_control_1.type("clear", delay=10)
+        self.t_control_2.press("Enter")
+        self.t_control_3.type("pip install pytest", delay=10)
+        self.t_control_4.press("Enter")

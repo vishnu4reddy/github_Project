@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 def page4():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        context = browser.new_context()
+        # context = browser.new_context()
         page = browser.new_page()
         yield page
 # # Copyright (c) Microsoft Corporation.
