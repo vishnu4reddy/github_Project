@@ -76,6 +76,6 @@ class LoginPage:
         self.terminal.click()
         self.t_control_1.type("clear", delay=10)
         self.t_control_2.press("Enter")
-        self.t_control_3.type("pytest test_sample.py", delay=10)
+        self.t_control_3.type("pytest test _sample.py", delay=10)
         self.t_control_4.press("Enter")
         time.sleep(90)
