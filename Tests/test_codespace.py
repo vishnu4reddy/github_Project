@@ -13,5 +13,3 @@ def test_check_login(page: Page):
     login_page.repositories()
     login_page.test_files()
     login_page.Codespaces()
-
-    LoginPage(page)
