@@ -6,7 +6,6 @@ password = config.git_pass
 
 
 def test_check_login(page: Page):
-
     login_page = LoginPage(page)
     login_page.navigate()
     login_page.login(Email, password)

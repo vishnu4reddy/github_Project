@@ -10,7 +10,7 @@ class LoginPage:
         self.seemore = page.locator(
             "(//button[@name='button'][normalize-space()='Show more'])[1]")
         self.perticular_repositories = page.locator(
-            "//ul[2]//li[4]//div[1]//div[1]//a[1]")
+            "//img[@alt='Post_Rolex_Linkedin_sel']")
         self.test_folder = page.get_by_role("link", name="Tests")
         self.test_file = page.locator(
             "//a[normalize-space()='test_share_post.py']")

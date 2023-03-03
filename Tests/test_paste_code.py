@@ -15,4 +15,4 @@ def test_check_login(page: Page):
     login_page.Codespaces()
     login_page.Codespace()
 
-    LoginPage(page)
+    
