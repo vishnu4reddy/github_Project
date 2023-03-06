@@ -14,5 +14,3 @@ def test_check_login(page: Page):
     login_page.test_files()
     login_page.Codespaces()
     login_page.Codespace()
-
-    
