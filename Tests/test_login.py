@@ -1,5 +1,5 @@
 from Page_Object.login_page_po import LoginPage
-from playwright.sync_api import 
+from playwright.sync_api import sync_playwright
 from Data import config
 Email = config.user_git
 password = config.git_pass
