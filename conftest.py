@@ -7,24 +7,24 @@
 #     Page,
 #     Playwright,
 #     Selectors,
-#     sync_playwright,
-# )
-from typing import Dict, Generator
-import pytest
-from playwright.sync_api import sync_playwright
+# #     sync_playwright,
+# # )
+# from typing import Dict, Generator
+# import pytest
+# from playwright.sync_api import sync_playwright
 
 
-@pytest.fixture()
-def page4(pytestconfig):
-    with sync_playwright() as p:
-        # browser = p.chromium.launch(headless=False)
-        browser = p.chromium.launch(headless=True)
-        # browser = p.chromium.launch(channel="chrome")
-        # print(pytestconfig.getoption("--headed"))
-        # print(pytestconfig)
-        # context = browser.new_context()
-        page = browser.new_page()
-        yield page
+# @pytest.fixture()
+# def page(pytestconfig):
+#     with sync_playwright() as p:
+#         # browser = p.chromium.launch(headless=False)
+#         browser = p.chromium.launch(headless=True)
+#         # browser = p.chromium.launch(channel="chrome")
+#         # print(pytestconfig.getoption("--headed"))
+#         # print(pytestconfig)
+#         # context = browser.new_context()
+#         page = browser.new_page()
+#         yield page
 # Copyright (c) Microsoft Corporation.
 
 # Licensed under the Apache License, Version 2.0 (the "License")
