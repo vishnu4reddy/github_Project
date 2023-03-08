@@ -7,8 +7,7 @@ class LoginPage:
         self.username = page.locator('//*[@id="login_field"]')
         self.password = page.locator('//*[@id="password"]')
         self.login_button = page.locator("//input[@name='commit']")
-        self.seemore = page.locator(
-            "(//button[@name='button'][normalize-space()='Show more'])[1]")
+        self.seemore = page.get_by_role("button", name="Show more")
         self.perticular_repositories = page.locator(
             "//img[@alt='Post_Rolex_Linkedin_sel']")
         self.test_folder = page.get_by_role("link", name="Tests")
