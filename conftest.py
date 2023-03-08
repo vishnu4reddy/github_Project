@@ -1,15 +1,4 @@
-# from .utils import utils as utils_object
-# from .utils import Utils
-# from playwright.sync_api import (
-#     Browser,
-#     BrowserContext,
-#     BrowserType,
-#     Page,
-#     Playwright,
-#     Selectors,
-# #     sync_playwright,
-# # )
-# from typing import Dict, Generator
+
 import pytest
 from playwright.sync_api import sync_playwright
 
