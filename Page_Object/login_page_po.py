@@ -36,7 +36,6 @@ class LoginPage:
         self.t_control_2 = page.keyboard
         self.t_control_3 = page.keyboard
         self.t_control_4 = page.keyboard
-        # self.t_control_1 = page
 
     def navigate(self):
         self.page.goto("https://github.com/login")
